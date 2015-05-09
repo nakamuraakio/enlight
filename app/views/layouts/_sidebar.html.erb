@@ -1,0 +1,20 @@
+<div class="sidebar"> 
+  <div class="sidebar-profile">
+    <%= yield :sidebar %>
+  </div>
+  <div class="sidebar-menu">
+    <ul class="nl">
+      <li>
+        <% if current_page?(profile_path(current_user.id)) %>
+          <%= link_to 'プロフィールを編集する', edit_profile_path(@profile) %>
+        <% else %>
+          <%= link_to '戻る', profile_path(current_user.id) %>
+        <% end %>
+      </li>
+      <li><a href="#">メニュー項目1</a></li>
+      <li><a href="#">メニュー項目2</a></li>
+      <li><a href="#">メニュー項目3</a></li>
+      <li><a href="#">メニュー項目4</a></li>
+    </ul>
+  </div>
+</div>

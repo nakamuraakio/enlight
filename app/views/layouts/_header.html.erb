@@ -1,0 +1,20 @@
+<header>
+  <nav>
+    <!-- user_signed_in? はユーザがログインしているか調べるdeviseのHelperメソッド -->
+    <% if user_signed_in? %> 
+    <!-- current_user は現在ログインしているUserオブジェクトを返すdeviseのHelperメソッド -->
+    <!-- *_path はUserモデルを作成したときに、
+    deviseにより自動で作成されてますので、rake routesで確認できます -->
+      Logged in as <strong><%= current_user.email %></strong>.
+      <%= link_to 'プロフィール変更', edit_user_registration_path %> |
+      <%= link_to "ログアウト", destroy_user_session_path %> |
+      <%= link_to 'ホーム', profile_path(current_user.id) %>
+    <% else %>
+      <%= link_to "新規登録", new_user_registration_path %> |
+      <%= link_to "ログイン", new_user_session_path %>
+    <% end %>
+    
+  </nav>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+</header>

@@ -1,0 +1,27 @@
+<div class="sidebar">
+</div>
+<div class="contents">
+  <div class="firmlist">
+    <h1>Listing Firms</h1>
+
+    <br>
+
+    <% @firms.each do |firm| %>
+      <ul class="thumbnail">
+        <li>
+        <dl class="clearFix">
+          <dt class="photo">
+            <a href="#"><%= image_tag firm.logo.url(:thumb) %></a>
+          </dt>
+          <dt class="title">
+            <strong><%= firm.name %></strong>
+          </dt>
+          <dd><%= firm.description %></dd>
+        </dl>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to 'New Firm', new_firm_path %>

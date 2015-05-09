@@ -1,0 +1,191 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+/* --- 全体の背景・テキスト --- */
+body {
+margin: 0;
+padding: 0;
+background-color: #ffffff; /* ページの背景色 */
+color: #000000; /* 全体の文字色 */
+font-size: 100%; /* 全体の文字サイズ */
+}
+
+/* --- 全体のリンクテキスト --- */
+a:link { color: #0000ff; }
+a:visited { color: #800080; }
+a:hover { color: #ff0000; }
+a:active { color: #ff0000; }
+
+li{
+  list-style-type: none;
+}
+
+
+header{
+  height: 65px;
+  width: 100%;
+  background-color: rgba(0,0,0,0.9);
+  /*positionプロパティをfixedに、topを0に指定してください*/
+  position: fixed;
+  top: 0;
+
+  /*z-indexを10に指定してください*/
+  z-index: 10;
+  color: white;
+
+}
+
+.sidebar{
+  height: 600px;
+  float: left;
+  width: 19.6%;  
+  background-color: red;
+  padding: 0;
+}
+/*----------------------------------------------------------------------start*/
+/* --- ナビゲーションバー --- */
+div.sidebar-menu {
+width: 100%; /* ナビゲーションの幅 */
+font-size: 80%;
+}
+
+/* --- メニューエリア --- */
+div.sidebar-menu ul.nl {
+margin: 0;
+padding: 0;
+border-top: 1px #c0c0c0 dotted; /* 最上部の境界線 */
+list-style-type: none;
+text-align: left;
+}
+
+/* --- メニュー項目 --- */
+div.sidebar-menu ul.nl li {
+padding: 3px 1px; /* 項目のパディング（上下、左右） */
+background-color: #f9f9f9; /* 項目の背景色 */
+border-bottom: 1px #c0c0c0 dotted; /* 項目の下境界線 */
+}
+
+/* --- リンク --- */
+div.sidebar-menu ul.nl li a {
+display: block;
+position: relative; /* IE6用 */
+padding: 8px 10px; /* リンクエリアのパディング（上下、左右） */
+border-left: 4px #c0c0c0 solid; /* リンクエリアの左境界線 */
+text-decoration: none; /* テキストの下線（なし） */
+}
+/* --- ポイント時の設定 --- */
+div.sidebar-menu ul.nl li a:hover {
+border-left-color: #e0e0e0; /* ポイント時の左境界線色 */
+}
+/*----------------------------------------------------------------------end*/
+.contents{
+  height: 600px;
+  float: right;
+  width: 80.4%;
+  padding: 0;
+  margin: 0;
+  background-color: yellow;
+}
+
+.content-left{
+  height: 80%;
+  margin: 60px 25px;
+  padding: 0px;
+  width: 40%;
+  float: left;
+  background-color: green;
+}
+
+.content-right{
+  height: 80%;
+  margin: 60px 25px;
+  padding: 0px;
+  width: 40%;
+  float: right;
+  background-color: green;
+}
+
+.main{
+  height: 600px;
+  width: 100%;
+  margin-top: 65px
+}
+/*----------------------------------------------------------------------start*/
+/* --- リストエリア --- */
+ul.thumbnail {
+width: 400px; /* リストエリアの幅 */
+margin: 0;
+padding: 0;
+border-top: 1px #808080 dotted; /* リストエリアの上境界線 */
+list-style-type: none;
+}
+
+/* --- リスト項目 --- */
+ul.thumbnail li {
+padding: 20px 15px; /* リスト項目のパディング（上下、左右） */
+border-bottom: 1px #808080 dotted; /* リスト項目の下境界線 */
+}
+
+/* --- 項目内容 --- */
+ul.thumbnail dl {
+width: 100%;
+margin: 0;
+font-size: 80%;
+}
+
+/* --- 写真エリア --- */
+ul.thumbnail dt.photo {
+width: 160px; /* 写真エリアの幅 */
+float: left;
+}
+ul.thumbnail dt.photo img {
+border: 1px #808080 solid; /* 写真の境界線 */
+}
+
+/* --- キャプションエリア --- */
+ul.thumbnail dt.title,
+ul.thumbnail dd {
+margin: 0 0 0 160px; /* キャプションエリアのマージン（上右下左） */
+}
+
+/* --- タイトルエリア --- */
+ul.thumbnail dt.title {
+margin-bottom: 5px; /* タイトルエリアの下マージン */
+line-height: 120%;
+}
+
+/* --- コメントエリア --- */
+ul.thumbnail dd {
+line-height: 150%;
+}
+
+/* --- clearfix --- */
+.clearFix:after {
+content: ".";
+display: block;
+height: 0;
+clear: both;
+visibility: hidden;
+}
+.clearFix {
+min-height: 1px;
+}
+/*----------------------------------------------------------------------end*/
+
+.firmlist{
+  background-color: white;
+  margin: 30px;
+  padding: 30px;
+}

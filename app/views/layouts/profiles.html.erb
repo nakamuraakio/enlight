@@ -14,10 +14,15 @@
     <%= render partial: "layouts/sidebar" %>
     <div class="contents">
       <div class="content-left">
-        <%= link_to "メッセージを送る", '#' %>
+        <%= yield %>
       </div>
       <div class="content-right">
-        <%= link_to "企業を探す", firms_path %>
+        <div class="content-right-top">
+          <%= link_to "企業を探す", firms_path %>
+        </div>
+        <div class="content-right-bottom">
+          <%= link_to "メッセージを送る" , '#' %>
+        </div>
       </div>
     </div>
   </div>

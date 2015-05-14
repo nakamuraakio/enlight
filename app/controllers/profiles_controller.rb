@@ -66,7 +66,11 @@ class ProfilesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
-      @profile = Profile.find(current_user.id)
+      if current_user.profile.nil?
+        redirect_to new_profile_url
+      else
+        @profile = Profile.find(current_user.id)
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

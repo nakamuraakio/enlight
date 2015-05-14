@@ -11,14 +11,16 @@
     <%= render partial: "layouts/header" %>
   </div>
   <div class="main">
-    <%= render partial: "layouts/sidebar" %>
+    <% unless current_user.profile.nil? %>
+      <%= render partial: "layouts/sidebar" %>
+    <% end %>
     <div class="contents">
       <div class="content-left">
         <%= yield %>
       </div>
       <div class="content-right">
         <div class="content-right-top">
-          <%= link_to "企業を探す", firms_path %>
+          
         </div>
         <div class="content-right-bottom">
           <%= link_to "メッセージを送る" , '#' %>
@@ -26,6 +28,7 @@
       </div>
     </div>
   </div>
+  <%= render partial: "layouts/footer" %>
 </body>
 </html>
   

@@ -5,6 +5,7 @@ class FirmsController < ApplicationController
   # GET /firms.json
   def index
     @firms = Firm.all
+    @firms = Firm.paginate(:page => params[:page], :per_page => 2)
   end
 
   # GET /firms/1

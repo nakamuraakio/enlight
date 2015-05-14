@@ -54,11 +54,17 @@ header{
   background-color: red;
   padding: 0;
 }
+
+.sidebar-profile{
+  padding: 0;
+  margin: 5px 10px;
+}
 /*----------------------------------------------------------------------start*/
 /* --- ナビゲーションバー --- */
 div.sidebar-menu {
-width: 100%; /* ナビゲーションの幅 */
+ /* ナビゲーションの幅 */
 font-size: 80%;
+margin: 0px 10px;
 }
 
 /* --- メニューエリア --- */
@@ -90,6 +96,25 @@ div.sidebar-menu ul.nl li a:hover {
 border-left-color: #e0e0e0; /* ポイント時の左境界線色 */
 }
 /*----------------------------------------------------------------------end*/
+/*----------------------------------------------------------------------start*/
+/* --- 見出しエリア --- */
+div.heading {
+width: 600px; /* 見出しエリアの幅 */
+margin-bottom: 1em;
+padding: 4px 0; /* 見出しエリアのパディング（上下、左右） */
+border-bottom: 1px #c0c0c0 solid; /* 見出しエリアの下境界線 */
+}
+
+/* --- 見出し --- */
+div.heading h3 {
+margin: 0;
+padding: 3px 3px 0 5px; /* 見出しのパディング（上右下左） */
+border-left: 5px #ff8000 solid; /* 見出しの左境界線 */
+font-size: 100%; /* 見出しの文字サイズ */
+line-height: 100%;
+}
+/*----------------------------------------------------------------------end*/
+
 .contents{
   height: 600px;
   float: right;
@@ -120,7 +145,7 @@ border-left-color: #e0e0e0; /* ポイント時の左境界線色 */
 .main{
   height: 600px;
   width: 100%;
-  margin-top: 65px
+  margin-top: 65px;
 }
 /*----------------------------------------------------------------------start*/
 /* --- リストエリア --- */
@@ -186,6 +211,13 @@ min-height: 1px;
 
 .firmlist{
   background-color: white;
-  margin: 30px;
+  margin: 0;
   padding: 30px;
+}
+
+footer{
+  height: 50px;
+  width: 100%;
+  background-color: blue;
+  bottom: 0;
 }

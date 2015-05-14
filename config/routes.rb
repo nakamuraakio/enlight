@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
+
+  get 'messages/index'
+
+  get 'users/index'
+
   resources :firms
   resources :profiles
-  
 
-  devise_for :users
+  devise_for :users, :controllers => {
+    :registrations => 'users/registrations',
+    :sessions => 'users/sessions'
+  }
+  resources :users, :only => [:index]
   get 'home/index'
   root to: "home#index"
   # The priority is based upon order of creation: first created -> highest priority.

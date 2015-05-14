@@ -1,11 +1,10 @@
-<div class="sidebar">
-</div>
-<div class="contents">
+
   <div class="firmlist">
-    <h1>Listing Firms</h1>
+    <h1>企業一覧</h1>
 
     <br>
 
+    <%= will_paginate @firms %>
     <% @firms.each do |firm| %>
       <ul class="thumbnail">
         <li>
@@ -17,11 +16,10 @@
             <strong><%= firm.name %></strong>
           </dt>
           <dd><%= firm.description %></dd>
+          <%= link_to '詳細を見る', firm_path(firm) %>
+          <%= link_to '気になる', '#' %>
         </dl>
         </li>
       </ul>
     <% end %>
   </div>
-</div>
-
-<%= link_to 'New Firm', new_firm_path %>

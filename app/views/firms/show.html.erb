@@ -1,5 +1,5 @@
-<p id="notice"><%= notice %></p>
-
+<div class="firmlist">
+<h1>企業詳細</h1>
 <p>
   <strong>Name:</strong>
   <%= @firm.name %>
@@ -15,5 +15,7 @@
   <%= @firm.description %>
 </p>
 
-<%= link_to 'Edit', edit_firm_path(@firm) %> |
-<%= link_to 'Back', firms_path %>
+<%= link_to '一覧に戻る', firms_path %> |
+<%= link_to '気になる', '#' %> |
+<%= link_to 'メッセージを送る', '#' %>
+</div>

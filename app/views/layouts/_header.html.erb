@@ -5,10 +5,14 @@
     <!-- current_user は現在ログインしているUserオブジェクトを返すdeviseのHelperメソッド -->
     <!-- *_path はUserモデルを作成したときに、
     deviseにより自動で作成されてますので、rake routesで確認できます -->
-      Logged in as <strong><%= current_user.email %></strong>.
-      <%= link_to 'プロフィール変更', edit_user_registration_path %> |
+      Logged in as <strong><%= current_user.email || current_firmuser.email %></strong>.
+      <%= link_to 'ログインアカウント変更', edit_user_registration_path %> |
       <%= link_to "ログアウト", destroy_user_session_path %> |
       <%= link_to 'ホーム', profile_path(current_user.id) %>
+    <% elsif firmuser_signed_in? %>
+      <%= link_to 'ログインアカウント変更', edit_firmuser_registration_path %> |
+      <%= link_to 'ログアウト', destroy_firmuser_session_path %> |
+      <%= link_to 'ホーム', users_path %>
     <% else %>
       <%= link_to "新規登録", new_user_registration_path %> |
       <%= link_to "ログイン", new_user_session_path %>

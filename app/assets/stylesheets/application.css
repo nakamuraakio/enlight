@@ -23,7 +23,7 @@ font-size: 100%; /* 全体の文字サイズ */
 }
 
 /* --- 全体のリンクテキスト --- */
-a:link { color: #0000ff; }
+a:link { color: #e1e1e1; }
 a:visited { color: #800080; }
 a:hover { color: #ff0000; }
 a:active { color: #ff0000; }

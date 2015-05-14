@@ -15,7 +15,11 @@
   <%= @firm.description %>
 </p>
 
-<%= link_to '一覧に戻る', firms_path %> |
-<%= link_to '気になる', '#' %> |
-<%= link_to 'メッセージを送る', '#' %>
+<% if current_user %>
+  <%= link_to '一覧に戻る', firms_path %> |
+  <%= link_to '気になる', '#' %> | 
+  <%= link_to 'メッセージを送る', '#' %>
+<% else %>
+  <%= link_to 'ホーム画面に戻る', '#' %>
+<% end %>
 </div>

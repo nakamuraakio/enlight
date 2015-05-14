@@ -1,6 +1,6 @@
 class FirmsController < ApplicationController
   before_action :set_firm, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, except: [:new, :create, :show]
   # GET /firms
   # GET /firms.json
   def index

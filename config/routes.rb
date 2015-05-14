@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
 
+  devise_for :firmusers
   get 'messages/index'
-
-  get 'users/index'
 
   resources :firms
   resources :profiles
+
+  resources :conversations do
+    resources :messages
+  end
 
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',

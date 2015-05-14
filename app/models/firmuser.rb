@@ -1,11 +1,9 @@
-class User < ActiveRecord::Base
+class Firmuser < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   
-  
-  has_one :profile, dependent: :destroy
+  has_one :firm
   has_many :conversations
-  accepts_nested_attributes_for :profile
 end

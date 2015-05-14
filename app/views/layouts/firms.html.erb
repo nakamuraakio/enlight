@@ -11,7 +11,9 @@
     <%= render partial: "layouts/header" %>
   </div>
   <div class="main">
-    <%= render partial: "layouts/sidebar" %>
+    <% if current_user %>
+      <%= render partial: "layouts/sidebar" %>
+    <% end %>
     <div class="contents">
       <%= yield %>
     </div>

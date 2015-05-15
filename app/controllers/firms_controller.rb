@@ -1,6 +1,6 @@
 class FirmsController < ApplicationController
   before_action :set_firm, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:new, :create, :show]
+  before_action :authenticate_firmuser!, only: [:new, :create, :destroy]
   # GET /firms
   # GET /firms.json
   def index
@@ -26,6 +26,8 @@ class FirmsController < ApplicationController
   # POST /firms.json
   def create
     @firm = Firm.new(firm_params)
+    @firm.firmuser = current_firmuser
+    @firm.id = current_firmuser.id
 
     respond_to do |format|
       if @firm.save
@@ -70,6 +72,6 @@ class FirmsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def firm_params
-      params.require(:firm).permit(:name, :description, :logo)
+      params.require(:firm).permit(:name, :description, :logo, :firmuser_id)
     end
 end

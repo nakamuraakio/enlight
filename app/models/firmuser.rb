@@ -5,5 +5,7 @@ class Firmuser < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   
   has_one :firm
+  accepts_nested_attributes_for :firm
+
   has_many :conversations
 end

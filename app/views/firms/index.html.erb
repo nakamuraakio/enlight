@@ -15,7 +15,7 @@
           <dt class="title">
             <strong><%= firm.name %></strong>
           </dt>
-          <dd><%= firm.description %></dd>
+          <dd><%= truncate(firm.description, length: 80) %></dd>
           <%= link_to '詳細を見る', firm_path(firm) %>
           <%= link_to '気になる', '#' %>
         </dl>

@@ -1,0 +1,51 @@
+<div class="sidebar"> 
+  <div class="sidebar-profile">
+    <div class="heading">
+      <h3>貴社の情報</h3>
+    </div>
+    <ul class="profile-list">
+      <li>
+        <strong>Logo:</strong><br>
+          <%= image_tag current_firmuser.firm.logo.url(:thumb) %>
+      </li>
+      <li>
+        <strong>User:</strong><br>
+        <%= current_firmuser.id %>
+      </li>
+      <li>
+        <strong>Name:</strong><br>
+        <% if current_firmuser.firm.name.blank? %>
+          <%= "未登録" %>
+        <% else %>
+          <%= current_firmuser.firm.name %>
+        <% end %>
+      </li>
+      <li>
+        <strong>Description:</strong><br>
+        <% if current_firmuser.firm.description.blank? %>
+          <%= "未登録" %>
+        <% else %>
+          <%= truncate(current_firmuser.firm.description, length: 50) %>
+        <% end %>
+      </li>    
+    </ul>
+  </div>
+
+  <div class="sidebar-menu">
+    <ul class="nl">
+      <li class="profile-edit">
+        <% unless current_page?(edit_firm_path(current_firmuser)) %>
+          <%= link_to 'プロフィールを編集する', edit_firm_path(current_firmuser) %>
+        <% else %>
+          <%= link_to '戻る', firm_path(current_firmuser.id) %>
+        <% end %>
+      </li>
+      <li><%= link_to '企業を見る', firms_path %></li>
+      <li><a href="#">メニュー項目2</a></li>
+      <li><a href="#">メニュー項目3</a></li>
+      <li><a href="#">メニュー項目4</a></li>
+    </ul>
+  </div>
+</div>
+
+

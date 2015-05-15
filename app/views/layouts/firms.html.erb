@@ -12,7 +12,13 @@
   </div>
   <div class="main">
     <% if current_user %>
-      <%= render partial: "layouts/sidebar" %>
+      <% if current_user.profile %>
+        <%= render partial: "layouts/sidebar" %>
+      <% end %>
+    <% elsif current_firmuser %>
+      <% if current_firmuser.firm %>
+        <%= render partial: "layouts/sidebar2" %>
+      <% end %>
     <% end %>
     <div class="contents">
       <%= yield %>

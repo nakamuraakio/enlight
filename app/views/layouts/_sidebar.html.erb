@@ -53,7 +53,7 @@
         <% if current_user.profile.bio.blank? %>
           <%= "未登録" %>
         <% else %>
-          <%= current_user.profile.bio %>
+          <%= truncate(current_user.profile.bio, length: 50) %>
         <% end %>
       </li>    
     </ul>

@@ -11,6 +11,8 @@
       <th>Major</th>
       <th>Phone</th>
       <th>Bio</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -22,7 +24,9 @@
       <td><%= user.profile.university %></td>
       <td><%= user.profile.major %></td>
       <td><%= user.profile.phone %></td>
-      <td><%= user.profile.bio %></td>
+      <td><%= truncate(user.profile.bio, length: 50) %></td>
+      <td><%= link_to '気になる', '#' %></td>
+      <td><%= link_to 'メッセージを送る', '#' %></td>
     </tr>
   <% end %>
 

@@ -5,26 +5,20 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <meta content='<%= user_signed_in? ? current_user.id : "" %>' name='user-id'/>
-
 </head>
 <body>
-  <%= render partial: "layouts/header" %>
-  
-  <% if current_user %>
-    <% if current_user.profile %>
-      <%= render partial: "layouts/sidebar" %>
-    <% end %>
-  <% elsif current_firmuser %>
-    <% if current_firmuser.firm %>
+  <div>
+    <%= render partial: "layouts/header" %>
+  </div>
+  <div class="main">
+    <% unless current_firmuser.firm.nil? %>
       <%= render partial: "layouts/sidebar2" %>
     <% end %>
-  <% end %>
-  <div class="main">
-    
-    <%= yield %>
+    <div class="contents">
+      <%= yield %>
+    </div>
   </div>
-
   <%= render partial: "layouts/footer" %>
 </body>
 </html>
+  

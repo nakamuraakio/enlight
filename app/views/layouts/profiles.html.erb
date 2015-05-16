@@ -11,9 +11,9 @@
     <%= render partial: "layouts/header" %>
   </div>
   <div class="main">
-    <% unless current_user.profile.nil? %>
+    <div class="main-left">
       <%= render partial: "layouts/sidebar" %>
-    <% end %>
+    </div>
     <div class="contents">
       <div class="content-left">
         <%= yield %>
@@ -29,6 +29,8 @@
     </div>
   </div>
   <%= render partial: "layouts/footer" %>
+
+  <div id="product-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
 </body>
 </html>
   

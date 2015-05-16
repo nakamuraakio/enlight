@@ -1,0 +1,32 @@
+  <h3><%= @profile.name %>さんのプロフィール</h3>
+  <p>
+    <strong>Name:</strong>
+    <%= @profile.name %>
+  </p>
+
+  <p>
+    <strong>Age:</strong>
+    <%= @profile.age %>
+  </p>
+
+  <p>
+    <strong>University:</strong>
+    <%= @profile.university %>
+  </p>
+
+  <p>
+    <strong>Major:</strong>
+    <%= @profile.major %>
+  </p>
+
+  <p>
+    <strong>Phone:</strong>
+    <%= @profile.phone %>
+  </p>
+
+  <p>
+    <strong>Bio:</strong>
+    <%= @profile.bio %>
+  </p>
+
+  <%= link_to '一覧へ戻る', users_path %>

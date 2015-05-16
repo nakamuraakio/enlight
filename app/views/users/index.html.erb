@@ -1,7 +1,9 @@
 
 
         <!-- Table -->
-<table class="table">
+<table class="usertable">
+  <%= will_paginate @profiles, :renderer => BootstrapPagination::Rails %>
+  <caption>学生一覧</caption>
   <thead>
     <tr>
       <th>User ID</th>
@@ -11,24 +13,27 @@
       <th>Major</th>
       <th>Phone</th>
       <th>Bio</th>
-      <th></th>
-      <th></th>
+      <th>詳細</th>
+      <th>気になる！ボタン</th>
+      <th>メッセージを送る</th>
     </tr>
   </thead>
   <tbody>
-  <% @users.each do |user|%>
+  <% @profiles.each do |profile|%>
     <tr>
-      <td><%= user.id %></td>
-      <td><%= user.profile.name %></td>
-      <td><%= user.profile.age %></td>
-      <td><%= user.profile.university %></td>
-      <td><%= user.profile.major %></td>
-      <td><%= user.profile.phone %></td>
-      <td><%= truncate(user.profile.bio, length: 50) %></td>
+      <td><%= profile.user.id %></td>
+      <td><%= profile.name %></td>
+      <td><%= profile.age %></td>
+      <td><%= profile.university %></td>
+      <td><%= profile.major %></td>
+      <td><%= profile.phone %></td>
+      <td><%= truncate(profile.bio, length: 50) %></td>
+      <td><%= link_to '詳細を見る', user_path(profile.user.id) %>
       <td><%= link_to '気になる', '#' %></td>
       <td><%= link_to 'メッセージを送る', '#' %></td>
     </tr>
   <% end %>
 
   </tbody>
+
 </table>

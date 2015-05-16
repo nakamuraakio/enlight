@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'
   }
-  resources :users, :only => [:index]
+  resources :users, :only => [:index, :show]
   get 'home/index'
   root to: "home#index"
   # The priority is based upon order of creation: first created -> highest priority.

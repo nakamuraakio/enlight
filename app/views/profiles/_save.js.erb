@@ -1,0 +1,10 @@
+$("ul.errors").html("")
+<% if @profile.errors.any? %>
+  <% @profile.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+  <% end %>
+<% else %>
+  $(".product-show").html("<%= escape_javascript(render 'show') %>")
+  $(".main-left").html("<%= escape_javascript(render 'layouts/sidebar') %>")
+  $("#product-modal").modal("hide")
+<% end %>

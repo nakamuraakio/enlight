@@ -3,77 +3,77 @@
     <div class="heading">
       <h3>ユーザー情報</h3>
     </div>
-    <ul class="profile-list">
-      <li>
+    <ul class="profile-list list-group">
+    <% if @profile %>
+      <li class="list-group-item">
         <strong>User:</strong><br>
-        <%= current_user.id %>
+        <%= @profile.id %>
       </li>
-      <li>
+      <li class="list-group-item">
         <strong>Name:</strong><br>
-        <% if current_user.profile.name.blank? %>
+        <% if @profile.name.blank? %>
           <%= "未登録" %>
         <% else %>
-          <%= current_user.profile.name %>
+          <%= @profile.name %>
         <% end %>
       </li>
-      <li>
+      <li class="list-group-item">
         <strong>Age:</strong><br>
-        <% if current_user.profile.age.blank? %>
+        <% if @profile.age.blank? %>
           <%= "未登録" %>
         <% else %>
-          <%= current_user.profile.age %>
+          <%= @profile.age %>
         <% end %>
       </li>
-      <li>
+      <li class="list-group-item">
         <strong>University:</strong><br>
-        <% if current_user.profile.university.blank? %>
+        <% if @profile.university.blank? %>
           <%= "未登録" %>
         <% else %>
-          <%= current_user.profile.university %>
+          <%= @profile.university %>
         <% end %>
       </li>
-      <li>
+      <li class="list-group-item">
         <strong>Major:</strong><br>
-        <% if current_user.profile.major.blank? %>
+        <% if @profile.major.blank? %>
           <%= "未登録" %>
         <% else %>
-          <%= current_user.profile.major %>
+          <%= @profile.major %>
         <% end %>
       </li>
-      <li>
+      <li class="list-group-item">
         <strong>Phone:</strong><br>
-        <% if current_user.profile.phone.blank? %>
+        <% if @profile.phone.blank? %>
           <%= "未登録" %>
         <% else %>
-          <%= current_user.profile.phone %>
+          <%= @profile.phone %>
         <% end %>
       </li>
-      <li>
+      <li class="list-group-item">
         <strong>Bio:</strong><br>
-        <% if current_user.profile.bio.blank? %>
+        <% if @profile.bio.blank? %>
           <%= "未登録" %>
         <% else %>
-          <%= truncate(current_user.profile.bio, length: 50) %>
+          <%= truncate(@profile.bio, length: 50) %>
         <% end %>
-      </li>    
+      </li>
+    <% else %>
+      <%= link_to "ユーザー情報の登録", new_profile_path, remote: true %>  
+    <% end %>  
     </ul>
   </div>
 
   <div class="sidebar-menu">
     <ul class="nl">
-      <li class="profile-edit">
-        <% if current_page?(profile_path(current_user)) %>
-          <%= link_to 'プロフィールを編集する', edit_profile_path(@profile) %>
-        <% else %>
-          <%= link_to '戻る', profile_path(current_user.id) %>
-        <% end %>
+      <li class="profile-edit">       
+        <%= link_to 'プロフィールを編集する', edit_profile_path(@profile), remote: true %>
       </li>
       <li><%= link_to '企業を見る', firms_path %></li>
       <li><a href="#">メニュー項目2</a></li>
-      <li><a href="#">メニュー項目3</a></li>
-      <li><a href="#">メニュー項目4</a></li>
     </ul>
   </div>
 </div>
+
+
 
 

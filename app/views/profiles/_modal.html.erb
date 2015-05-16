@@ -1,0 +1,53 @@
+<div class="modal-dialog">
+<div class="modal-content">
+<%= form_for(@profile, remote: true) do |f| %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h4><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h4>
+
+      <ul class="errors">
+      <% @profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title">New/Editing product</h4>
+  <div class="modal-body">
+    <%= f.hidden_field :user_id %>
+    <div class="form-group">
+      <%= f.label :name %><br>
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :age %><br>
+      <%= f.number_field :age, :class => 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :university %><br>
+      <%= f.text_field :university, :class => 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :major %><br>
+      <%= f.text_field :major, :class => 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :phone %><br>
+      <%= f.telephone_field :phone, :class => 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :bio %><br>
+      <%= f.text_area :bio, :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <%= f.submit "Save", :class => "btn btn-primary" %>
+  </div>
+<% end %>
+</div>
+</div>

@@ -27,30 +27,34 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(profile_params)
     @profile.user = current_user
     @profile.id = current_user.id
+    @profiles = Profile.all
 
-    respond_to do |format|
-      if @profile.save
-        format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
-        format.json { render :show, status: :created, location: @profile }
-      else
-        format.html { render :new }
-        format.json { render json: @profile.errors, status: :unprocessable_entity }
-      end
-    end
+    @profile.save
+    #respond_to do |format|
+      #if @profile.save
+       # format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
+        #format.json { render :show, status: :created, location: @profile }
+      #else
+       # format.html { render :new }
+        #format.json { render json: @profile.errors, status: :unprocessable_entity }
+      #end
+    #end
   end
 
   # PATCH/PUT /profiles/1
   # PATCH/PUT /profiles/1.json
   def update
-    respond_to do |format|
-      if @profile.update(profile_params)
-        format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
-        format.json { render :show, status: :ok, location: @profile }
-      else
-        format.html { render :edit }
-        format.json { render json: @profile.errors, status: :unprocessable_entity }
-      end
-    end
+    @profile.update(profile_params)
+    @profiles = Profile.all
+    #respond_to do |format|
+      #if @profile.update(profile_params)
+      #  format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
+      #  format.json { render :show, status: :ok, location: @profile }
+      #else
+      #  format.html { render :edit }
+      #  format.json { render json: @profile.errors, status: :unprocessable_entity }
+      #end
+    #end
   end
 
   # DELETE /profiles/1

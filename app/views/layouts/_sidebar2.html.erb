@@ -3,16 +3,16 @@
     <div class="heading">
       <h3>貴社の情報</h3>
     </div>
-    <ul class="profile-list">
-      <li>
+    <ul class="profile-list list-group">
+      <li class="list-group-item">
         <strong>Logo:</strong><br>
           <%= image_tag current_firmuser.firm.logo.url(:thumb) %>
       </li>
-      <li>
+      <li class="list-group-item">
         <strong>User:</strong><br>
         <%= current_firmuser.id %>
       </li>
-      <li>
+      <li class="list-group-item">
         <strong>Name:</strong><br>
         <% if current_firmuser.firm.name.blank? %>
           <%= "未登録" %>
@@ -20,7 +20,7 @@
           <%= current_firmuser.firm.name %>
         <% end %>
       </li>
-      <li>
+      <li class="list-group-item">
         <strong>Description:</strong><br>
         <% if current_firmuser.firm.description.blank? %>
           <%= "未登録" %>
@@ -42,8 +42,6 @@
       </li>
       <li><%= link_to '企業を見る', firms_path %></li>
       <li><a href="#">メニュー項目2</a></li>
-      <li><a href="#">メニュー項目3</a></li>
-      <li><a href="#">メニュー項目4</a></li>
     </ul>
   </div>
 </div>

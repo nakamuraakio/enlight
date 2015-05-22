@@ -1,8 +1,7 @@
 
 
         <!-- Table -->
-<table class="usertable">
-  <%= will_paginate @profiles, :renderer => BootstrapPagination::Rails %>
+<table class="table table-condensed">
   <caption>学生一覧</caption>
   <thead>
     <tr>
@@ -27,13 +26,14 @@
       <td><%= profile.university %></td>
       <td><%= profile.major %></td>
       <td><%= profile.phone %></td>
-      <td><%= truncate(profile.bio, length: 50) %></td>
+      <td><%= truncate(profile.bio, length: 30) %></td>
       <td><%= link_to '詳細を見る', user_path(profile.user.id) %>
-      <td><%= link_to '気になる', '#' %></td>
-      <td><%= link_to 'メッセージを送る', '#' %></td>
+      <td><%= link_to '気になる', '#', :class => 'btn btn-info' %></td>
+      <td><%= link_to 'Message me!', conversations_path(user_id: profile.user.id, firmuser_id: current_firmuser.id), method: 'post', :class => "btn btn-primary" %></td>
     </tr>
   <% end %>
 
   </tbody>
+  <%= will_paginate @profiles, :renderer => BootstrapPagination::Rails %>
 
 </table>

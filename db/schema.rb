@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150514085722) do
+ActiveRecord::Schema.define(version: 20150522050214) do
 
   create_table "conversations", force: :cascade do |t|
     t.integer  "user_id"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20150514085722) do
     t.text     "content"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.boolean  "creater_flag"
   end
 
   create_table "profiles", force: :cascade do |t|

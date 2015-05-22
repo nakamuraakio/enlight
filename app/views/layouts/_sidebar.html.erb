@@ -57,6 +57,59 @@
           <%= truncate(@profile.bio, length: 50) %>
         <% end %>
       </li>
+    <% elsif current_user.profile %>
+      <li class="list-group-item">
+        <strong>User:</strong><br>
+        <%= current_user.profile.id %>
+      </li>
+      <li class="list-group-item">
+        <strong>Name:</strong><br>
+        <% if current_user.profile.name.blank? %>
+          <%= "未登録" %>
+        <% else %>
+          <%= current_user.profile.name %>
+        <% end %>
+      </li>
+      <li class="list-group-item">
+        <strong>Age:</strong><br>
+        <% if current_user.profile.age.blank? %>
+          <%= "未登録" %>
+        <% else %>
+          <%= current_user.profile.age %>
+        <% end %>
+      </li>
+      <li class="list-group-item">
+        <strong>University:</strong><br>
+        <% if current_user.profile.university.blank? %>
+          <%= "未登録" %>
+        <% else %>
+          <%= current_user.profile.university %>
+        <% end %>
+      </li>
+      <li class="list-group-item">
+        <strong>Major:</strong><br>
+        <% if current_user.profile.major.blank? %>
+          <%= "未登録" %>
+        <% else %>
+          <%= current_user.profile.major %>
+        <% end %>
+      </li>
+      <li class="list-group-item">
+        <strong>Phone:</strong><br>
+        <% if current_user.profile.phone.blank? %>
+          <%= "未登録" %>
+        <% else %>
+          <%= current_user.profile.phone %>
+        <% end %>
+      </li>
+      <li class="list-group-item">
+        <strong>Bio:</strong><br>
+        <% if current_user.profile.bio.blank? %>
+          <%= "未登録" %>
+        <% else %>
+          <%= truncate(current_user.profile.bio, length: 50) %>
+        <% end %>
+      </li>
     <% else %>
       <%= link_to "ユーザー情報の登録", new_profile_path, remote: true %>  
     <% end %>  
@@ -66,10 +119,14 @@
   <div class="sidebar-menu">
     <ul class="nl">
       <li class="profile-edit">       
-        <%= link_to 'プロフィールを編集する', edit_profile_path(@profile), remote: true %>
+        <% if current_user.profile %>
+          <%= link_to 'プロフィールを編集する', edit_profile_path(current_user.id), remote: true %>
+        <% else %>
+          <%= link_to 'プロフィールの登録', new_profile_path, remote: true %>
+        <% end %>
       </li>
       <li><%= link_to '企業を見る', firms_path %></li>
-      <li><a href="#">メニュー項目2</a></li>
+      <li><%= link_to "メッセージを送る" , conversations_path %></li>
     </ul>
   </div>
 </div>

@@ -5,6 +5,8 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta content='<%= user_signed_in? ? current_user.id : "" %>' name='user-id'/>
+
 </head>
 <body>
   <div>
@@ -12,9 +14,7 @@
   </div>
   <div class="main">
     <% if current_user %>
-      <% if current_user.profile %>
-        <%= render partial: "layouts/sidebar" %>
-      <% end %>
+      <%= render partial: "layouts/sidebar" %>
     <% elsif current_firmuser %>
       <% if current_firmuser.firm %>
         <%= render partial: "layouts/sidebar2" %>
@@ -24,9 +24,9 @@
       <%= yield %>
     </div>
   </div>
+  
   <%= render partial: "layouts/footer" %>
 
   <div id="product-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
 </body>
 </html>
-  

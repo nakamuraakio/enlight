@@ -9,22 +9,15 @@
 
 </head>
 <body>
-  <%= render partial: "layouts/header" %>
-  
-  <% if current_user %>
-    <% if current_user.profile %>
-      <%= render partial: "layouts/sidebar" %>
-    <% end %>
-  <% elsif current_firmuser %>
-    <% if current_firmuser.firm %>
-      <%= render partial: "layouts/sidebar2" %>
-    <% end %>
-  <% end %>
+  <div>
+    <%= render partial: "layouts/header" %>
+  </div>
   <div class="main">
-    
     <%= yield %>
   </div>
   
   <%= render partial: "layouts/footer" %>
+
+  <div id="product-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
 </body>
 </html>

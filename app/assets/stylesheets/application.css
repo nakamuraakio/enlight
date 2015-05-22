@@ -18,15 +18,15 @@ body {
 margin: 0;
 padding: 0;
 background-color: #ffffff; /* ページの背景色 */
-color: #000000; /* 全体の文字色 */
+ /* 全体の文字色 */
 font-size: 100%; /* 全体の文字サイズ */
 }
 
 /* --- 全体のリンクテキスト --- */
-a:link { color: #e1e1e1; }
+/*a:link { color: #000000; }
 a:visited { color: #800080; }
 a:hover { color: #ff0000; }
-a:active { color: #ff0000; }
+a:active { color: #ff0000; }*/
 
 li{
   list-style-type: none;
@@ -47,8 +47,17 @@ header{
 
 }
 
+div.devise-form{
+  padding: 20px;
+  width: 30%;
+  margin-top: 120px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: green;
+}
+
 .sidebar{
-  height: 600px;
+  height: 100%;
   float: left;
   width: 19.6%;  
   background-color: red;
@@ -116,7 +125,7 @@ line-height: 100%;
 /*----------------------------------------------------------------------end*/
 
 .contents{
-  height: 600px;
+  height: 100%;
   float: right;
   width: 80.4%;
   padding: 0;
@@ -224,7 +233,7 @@ footer{
 
 /*----------------------------------------------------------------------begin*/
 /* --- 表全体 --- */
-table.usertable {
+table.table {
 margin-left: 10px; 
 width: 95%;/* 表の幅 */
 margin-bottom: 30px; /* 表の下マージン */
@@ -234,31 +243,41 @@ font-size: 80%;
 }
 
 /* --- 表タイトル --- */
-table.usertable caption {
+table.table caption {
 padding-bottom: 5px; /* 表タイトルの下パディング */
 }
 
 /* --- セル --- */
-table.usertable th,
-table.usertable td {
+table.table th,
+table.table td {
 /* width: 20%; */ /* セルの幅（セルの幅を均等にする場合） */
 padding: 6px 8px; /* セルのパディング（上下、左右） */
 border: 1px #c0c0c0 solid; /* セルの境界線 */
 }
 
 /* --- 見出しセル --- */
-table.usertable thead th {
+table.table thead th {
 background-color: #deefff; /* 見出しセルの背景色 */
 text-align: center;
 }
 
 /* --- フッタセル --- */
-table.usertable tfoot td {
+table.table tfoot td {
 background-color: #f5f5f5; /* フッタセルの背景色 */
 }
 
 /* --- データセル --- */
-table.usertable tbody td {
+table.table tbody td {
 background-color: #ffffff; /* データセルの背景色 */
 }
 /*----------------------------------------------------------------------end*/
+
+.message-table{
+  margin-top: 80px;
+  margin-left: 20px;
+}
+
+.message-list{
+  margin-top: 80px;
+  margin-left: 20px;
+}

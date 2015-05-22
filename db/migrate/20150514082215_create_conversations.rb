@@ -7,5 +7,8 @@ class CreateConversations < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    add_index :conversations, :user_id
+    add_index :conversations, :firmuser_id
   end
 end

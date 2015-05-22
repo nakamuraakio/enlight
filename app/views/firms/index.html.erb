@@ -15,9 +15,13 @@
           <dt class="title">
             <strong><%= firm.name %></strong>
           </dt>
-          <dd><%= truncate(firm.description, length: 80) %></dd>
-          <%= link_to '詳細を見る', firm_path(firm) %>
-          <%= link_to '気になる', '#' %>
+          <dd><%= truncate(firm.description, length: 80) %></dd><br>
+          <%= link_to '詳細を見る', firm_path(firm), :class => "btn btn-primary" %> 
+          <%= link_to '気になる', '#', :class => "btn btn-primary" %>
+          <% if current_user %>
+            <%= link_to 'Message me!', conversations_path(user_id: current_user.id, firmuser_id: firm.firmuser.id), method: 'post' %>
+          <% elsif current_firmuser %>
+          <% end %>
         </dl>
         </li>
       </ul>

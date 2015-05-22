@@ -6,11 +6,17 @@ class FirmsController < ApplicationController
   def index
     @firms = Firm.all
     @firms = Firm.paginate(:page => params[:page], :per_page => 2)
+    if current_user
+      @profile = Profile.find(current_user.id)
+    end
   end
 
   # GET /firms/1
   # GET /firms/1.json
   def show
+    if current_user
+      @profile = Profile.find(current_user.id)
+    end
   end
 
   # GET /firms/new

@@ -1,0 +1,82 @@
+<% if current_user %>
+
+<h4>Message Between <%= current_user.profile.name %> ＆ <%= @conversation.firmuser.firm.name %></h4>
+<div class="message-list">
+  <ul>
+    <% @messages.each do |message| %>
+      <% if message.content %>
+        <% user = User.find(message.conversation.user_id) %>
+        <% firmuser = Firmuser.find(message.conversation.firmuser_id) %>
+        <li>
+          <% if message.creater_flag == true %>
+            <strong><%= user.profile.name %></strong>
+          <% elsif message.creater_flag == false %>
+            <strong><%= firmuser.firm.name %></strong>
+          <% else %>
+            <strong>不明のユーザー</strong>
+          <% end %>   
+          <%= message.content %><br>
+          <time datetime="<%= message.created_at %>" title="<%= message.created_at.strftime("%d %b %Y at %I:%M%p") %>">
+          <%= message.created_at.strftime("%H:%M %p") %>
+        </li>
+    
+      <% end %>
+    <% end %>
+  </ul>
+
+
+<%= form_for [@conversation, @message] do |f| %>
+  <div class="field">
+    <%= f.text_area :content %>
+  </div>
+  <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
+  <%= f.text_field :creater_flag, value: true, type: "hidden" %>
+  <div>
+    <%= f.submit "Add Reply", :class => "btn btn-info" %>
+  </div>
+<% end %>
+</div>
+
+
+
+<% elsif current_firmuser %>
+
+
+<h4>Message Between <%= @conversation.user.profile.name %> ＆ <%= current_firmuser.firm.name %></h4>
+<div class="message-list">
+  <ul>
+    <% @messages.each do |message| %>
+      <% if message.content %>
+        <% user = User.find(message.conversation.user_id) %>
+        <% firmuser = Firmuser.find(message.conversation.firmuser_id) %>
+        <li>
+          <% if message.creater_flag == true %>
+            <strong><%= user.profile.name %></strong>
+          <% elsif message.creater_flag == false %>
+            <strong><%= firmuser.firm.name %></strong>
+          <% else %>
+            <strong>不明のユーザー</strong>
+          <% end %>   
+          <%= message.content %><br>
+          <time datetime="<%= message.created_at %>" title="<%= message.created_at.strftime("%d %b %Y at %I:%M%p") %>">
+          <%= message.created_at.strftime("%H:%M %p") %>
+        </li>
+    
+      <% end %>
+    <% end %>
+  </ul>
+
+
+<%= form_for [@conversation, @message] do |f| %>
+  <div class="field">
+    <%= f.text_area :content %>
+  </div>
+  <%= f.text_field :firmuser_id, value: current_firmuser.id, type: "hidden" %>
+  <%= f.text_field :creater_flag, value: false, type: "hidden" %>
+  <div>
+    <%= f.submit "Add Reply", :class => "btn btn-info" %>
+  </div>
+<% end %>
+</div>
+
+<% end %>

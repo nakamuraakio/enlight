@@ -1,7 +1,9 @@
-$(".errors").html("")
+$("ul.errors").html("")
 <% if @profile.errors.any? %>
+  $("ul.errors").append($("<h4 />").html("<%= pluralize(@profile.errors.count, "error").html_safe %>"))
+  $("ul.errors").removeClass("hidden")
   <% @profile.errors.full_messages.each do |message| %>
-    $(".errors").append($("<li />").html("<%= message.html_safe %>"))
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
   <% end %>
 <% else %>
   $(".product-show").html("<%= escape_javascript(render 'show') %>")

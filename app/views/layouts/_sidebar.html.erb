@@ -1,66 +1,17 @@
-<div class="sidebar"> 
+<div class="sidebar container"> 
   <div class="sidebar-profile">
     <div class="heading">
       <h3>ユーザー情報</h3>
     </div>
     <ul class="profile-list list-group">
-    <% if @profile %>
+   
+    <% if current_user.profile %>
       <li class="list-group-item">
-        <strong>User:</strong><br>
-        <%= @profile.id %>
-      </li>
-      <li class="list-group-item">
-        <strong>Name:</strong><br>
-        <% if @profile.name.blank? %>
-          <%= "未登録" %>
+        <% if current_user.profile.picture %>
+          <%= image_tag current_user.profile.picture.url(:thumb) %>
         <% else %>
-          <%= @profile.name %>
+          <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
         <% end %>
-      </li>
-      <li class="list-group-item">
-        <strong>Age:</strong><br>
-        <% if @profile.age.blank? %>
-          <%= "未登録" %>
-        <% else %>
-          <%= @profile.age %>
-        <% end %>
-      </li>
-      <li class="list-group-item">
-        <strong>University:</strong><br>
-        <% if @profile.university.blank? %>
-          <%= "未登録" %>
-        <% else %>
-          <%= @profile.university %>
-        <% end %>
-      </li>
-      <li class="list-group-item">
-        <strong>Major:</strong><br>
-        <% if @profile.major.blank? %>
-          <%= "未登録" %>
-        <% else %>
-          <%= @profile.major %>
-        <% end %>
-      </li>
-      <li class="list-group-item">
-        <strong>Phone:</strong><br>
-        <% if @profile.phone.blank? %>
-          <%= "未登録" %>
-        <% else %>
-          <%= @profile.phone %>
-        <% end %>
-      </li>
-      <li class="list-group-item">
-        <strong>Bio:</strong><br>
-        <% if @profile.bio.blank? %>
-          <%= "未登録" %>
-        <% else %>
-          <%= truncate(@profile.bio, length: 50) %>
-        <% end %>
-      </li>
-    <% elsif current_user.profile %>
-      <li class="list-group-item">
-        <strong>User:</strong><br>
-        <%= current_user.profile.id %>
       </li>
       <li class="list-group-item">
         <strong>Name:</strong><br>

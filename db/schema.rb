@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150522050214) do
+ActiveRecord::Schema.define(version: 20150528092734) do
 
   create_table "conversations", force: :cascade do |t|
     t.integer  "user_id"
@@ -54,9 +54,11 @@ ActiveRecord::Schema.define(version: 20150522050214) do
   create_table "messages", force: :cascade do |t|
     t.integer  "conversation_id"
     t.text     "content"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.boolean  "creater_flag"
+    t.boolean  "readflag",          default: false
+    t.boolean  "firmuser_readflag", default: false
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -67,8 +69,12 @@ ActiveRecord::Schema.define(version: 20150522050214) do
     t.integer  "phone"
     t.string   "bio"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   create_table "users", force: :cascade do |t|

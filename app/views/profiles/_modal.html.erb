@@ -1,6 +1,6 @@
 <div class="modal-dialog">
 <div class="modal-content">
-<%= form_for(@profile, remote: true) do |f| %>
+<%= form_for(@profile, remote: true, authenticity_token: true) do |f| %>
   
   
   <div class="modal-header">
@@ -13,17 +13,10 @@
   </div>
 
   <div class="modal-body">
-    <% if @profile.errors.any? %>
-    <div id="error_explanation">
-      <h4><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h4>
+    <ul class="errors list-group alert alert-danger hidden">
+    </ul>
+    
 
-      <ul class="errors">
-      <% @profile.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-    <% end %>
     <%= f.hidden_field :user_id %>
     <div class="form-group">
       <%= f.label :name %><br>
@@ -32,6 +25,10 @@
     <div class="form-group">
       <%= f.label :age %><br>
       <%= f.number_field :age, :class => 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :picture %><br>
+      <%= f.file_field :picture %>
     </div>
     <div class="form-group">
       <%= f.label :university %><br>
@@ -52,6 +49,8 @@
   </div>
   <div class="modal-footer">
     <%= f.submit "Save", :class => "btn btn-primary" %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                profiles_path, :class => 'btn btn-danger', data: {dismiss: "modal"}  %>      <!-- /modal-footer -->
   </div>
   
 <% end %>

@@ -1,6 +1,6 @@
 
   <div class="firmlist">
-    <h1>企業一覧</h1>
+    <h4>企業一覧</h4>
 
     <br>
 
@@ -19,7 +19,7 @@
           <%= link_to '詳細を見る', firm_path(firm), :class => "btn btn-primary" %> 
           <%= link_to '気になる', '#', :class => "btn btn-primary" %>
           <% if current_user %>
-            <%= link_to 'Message me!', conversations_path(user_id: current_user.id, firmuser_id: firm.firmuser.id), method: 'post' %>
+            <%= link_to_if(current_user.profile, 'Message me!', conversations_path(user_id: current_user.id, firmuser_id: firm.firmuser.id), method: 'post') %>
           <% elsif current_firmuser %>
           <% end %>
         </dl>

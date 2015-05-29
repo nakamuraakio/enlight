@@ -1,40 +1,96 @@
 <% if current_user %>
 
-<h4>Message Between <%= current_user.profile.name %> ＆ <%= @conversation.firmuser.firm.name %></h4>
-<div class="message-list">
-  <ul>
+<div class="page-header">
+  <h1>　Message Between <%= current_user.profile.name %> ＆ <%= @conversation.firmuser.firm.name %></h1>
+</div>
+
+<div class="panel panel-default" id="message-list">
+<div class="panel-body">
+  <ul class="media-list">
     <% @messages.each do |message| %>
       <% if message.content %>
         <% user = User.find(message.conversation.user_id) %>
         <% firmuser = Firmuser.find(message.conversation.firmuser_id) %>
-        <li>
-          <% if message.creater_flag == true %>
-            <strong><%= user.profile.name %></strong>
-          <% elsif message.creater_flag == false %>
-            <strong><%= firmuser.firm.name %></strong>
-          <% else %>
-            <strong>不明のユーザー</strong>
-          <% end %>   
-          <%= message.content %><br>
-          <time datetime="<%= message.created_at %>" title="<%= message.created_at.strftime("%d %b %Y at %I:%M%p") %>">
-          <%= message.created_at.strftime("%H:%M %p") %>
-        </li>
+        <% if message.creater_flag %>
+          <div class="panel panel-default message-left">
+            <div class="panel-body">
+              <li class="media">
+                <div class="media-left text-center">
+                  <%= image_tag current_user.profile.picture.url(:thumb) %>
+                  <strong><%= user.profile.name %></strong>
+                </div>
+                <div class="media-body">
+                  <small><%= message.content %></small><br>
+                </div>
+              </li>
+            </div>
+            <div class="panel-footer">
+            <time datetime="<%= message.created_at %>" title="<%= message.created_at.strftime("%d %b %Y at %I:%M%p") %>">
+            <%= message.created_at.strftime("%H:%M %p") %> 
+              <% if message.creater_flag %>  
+                <% if message.firmuser_readflag %>
+                   | 既読
+                <% else %>
+                   | 未読
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        <% elsif !message.creater_flag %>
+          <div class="panel panel-default message-right">
+            <div class="panel-body">
+              <li class="media">
+                <div class="media-body">
+                  <small><%= message.content %></small><br>
+                </div>
+                <div class="media-right text-center">
+                  <%= image_tag message.conversation.firmuser.firm.logo.url(:thumb) %>
+                  <strong><%= firmuser.firm.name %></strong>
+                </div>
+              </li>
+            </div>
+            <div class="panel-footer">
+            <time datetime="<%= message.created_at %>" title="<%= message.created_at.strftime("%d %b %Y at %I:%M%p") %>">
+            <%= message.created_at.strftime("%H:%M %p") %> 
+              <% if message.creater_flag %>  
+                <% if message.firmuser_readflag %>
+                  既読
+                <% else %>
+                  未読
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+
+        <% else %>
+        <% end %>
+        　
+          
+        
+
+
     
       <% end %>
     <% end %>
   </ul>
+</div>
+</div>
 
+<div class="panel panel-default" id="message-box">
+  <div class="panel-body">
+    <h4>メッセージを送ります</h4>
+    <%= form_for [@conversation, @message] do |f| %>
+      <div class="form-group">
+        <%= f.text_area :content, :class => "form-control message-input" %>
+      </div>
+      <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
+      <%= f.text_field :creater_flag, value: true, type: "hidden" %>
 
-<%= form_for [@conversation, @message] do |f| %>
-  <div class="field">
-    <%= f.text_area :content %>
+      <div class="form-group">
+        <%= f.submit "Add Reply", :class => "btn btn-info form-control" %>
+      </div>
+    <% end %>
   </div>
-  <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
-  <%= f.text_field :creater_flag, value: true, type: "hidden" %>
-  <div>
-    <%= f.submit "Add Reply", :class => "btn btn-info" %>
-  </div>
-<% end %>
 </div>
 
 
@@ -49,27 +105,37 @@
       <% if message.content %>
         <% user = User.find(message.conversation.user_id) %>
         <% firmuser = Firmuser.find(message.conversation.firmuser_id) %>
-        <li>
-          <% if message.creater_flag == true %>
+        <% if message.creater_flag %>
+          <li class="message-right">
             <strong><%= user.profile.name %></strong>
-          <% elsif message.creater_flag == false %>
+            <%= message.content %><br>
+            <time datetime="<%= message.created_at %>" title="<%= message.created_at.strftime("%d %b %Y at %I:%M%p") %>">
+            <%= message.created_at.strftime("%H:%M %p") %>
+          </li>
+        <% elsif !message.creater_flag %>
+          <li class="message-left">
             <strong><%= firmuser.firm.name %></strong>
-          <% else %>
-            <strong>不明のユーザー</strong>
-          <% end %>   
-          <%= message.content %><br>
-          <time datetime="<%= message.created_at %>" title="<%= message.created_at.strftime("%d %b %Y at %I:%M%p") %>">
-          <%= message.created_at.strftime("%H:%M %p") %>
-        </li>
+            <%= message.content %><br>
+            <time datetime="<%= message.created_at %>" title="<%= message.created_at.strftime("%d %b %Y at %I:%M%p") %>">
+            <%= message.created_at.strftime("%H:%M %p") %>
+            <% if message.readflag %>
+              既読
+            <% else %>
+              未読
+            <% end %>
+          </li>
+        <% else %>
+        <% end %>   
     
       <% end %>
     <% end %>
   </ul>
+</div>
 
 
 <%= form_for [@conversation, @message] do |f| %>
-  <div class="field">
-    <%= f.text_area :content %>
+  <div class="form-group">
+    <%= f.text_area :content, :class => "form-control input-lg" %>
   </div>
   <%= f.text_field :firmuser_id, value: current_firmuser.id, type: "hidden" %>
   <%= f.text_field :creater_flag, value: false, type: "hidden" %>

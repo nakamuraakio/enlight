@@ -12,9 +12,7 @@
   </div>
   <div class="main">
     <% if current_user %>
-      <% if current_user.profile %>
-        <%= render partial: "layouts/sidebar" %>
-      <% end %>
+      <%= render partial: "layouts/sidebar" %>
     <% elsif current_firmuser %>
       <% if current_firmuser.firm %>
         <%= render partial: "layouts/sidebar2" %>

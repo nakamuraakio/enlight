@@ -2,33 +2,40 @@
 
         <!-- Table -->
 <% if current_user %>
+
+
 <div class="message-table">
-<table class="table table-condensed">
-  <caption><%= current_user.profile.name %>のメッセージ一覧</caption>
-  <thead>
-    <tr>
-      <th>企業 ID</th>
-      <th>企業名</th>
-      <th>企業の詳細を見る</th>
-      <th>メッセージを見る</th>
-    </tr>
-  </thead>
-  <tbody>
+<% if current_user.conversations.count == 0 %>
+  <h5>メッセージはありません。</h5>
+<% else %>
+  <table class="table table-condensed">
+    <caption><%= current_user.profile.name %>のメッセージ一覧</caption>
+    <thead>
+      <tr>
+        <th>企業 ID</th>
+        <th>企業名</th>
+        <th>企業の詳細を見る</th>
+        <th>メッセージを見る</th>
+      </tr>
+    </thead>
+    <tbody>
 
-  <% @conversations.each do |conversation|%>
-    <tr>
-      <td><%= conversation.firmuser.id %></td>
-      <td><%= conversation.firmuser.firm.name %></td>
-      <td><%= link_to '詳細', firm_path(conversation.firmuser.firm) %></td>
-      <td><%= link_to 'メッセージを送る', conversation_messages_path(conversation) %></td>
-    </tr>
-  <% end %>
+    <% @conversations.each do |conversation|%>
+      <tr>
+        <td><%= conversation.firmuser.id %></td>
+        <td><%= conversation.firmuser.firm.name %></td>
+        <td><%= link_to '詳細', firm_path(conversation.firmuser.firm) %></td>
+        <td><%= link_to 'メッセージを送る', conversation_messages_path(conversation) %></td>
+      </tr>
+    <% end %>
 
-  </tbody>
+    </tbody>
 
-</table>
+  </table>
+
+<% end %>
+
 </div>
-
 
 
 <% elsif current_firmuser %>
@@ -51,7 +58,7 @@
     <tr>
       <td><%= conversation.user.id %></td>
       <td><%= conversation.user.profile.name %></td>
-      <td><%= link_to '詳細', users_path(conversation.user) %></td>
+      <td><%= link_to '詳細', user_path(conversation.user.id) %></td>
       <td><%= link_to 'メッセージを送る', conversation_messages_path(conversation) %></td>
     </tr>
   <% end %>

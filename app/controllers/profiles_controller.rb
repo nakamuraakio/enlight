@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  
   # GET /profiles
   # GET /profiles.json
   def index
@@ -27,34 +28,18 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(profile_params)
     @profile.user = current_user
     @profile.id = current_user.id
-    @profiles = Profile.all
-
+    
     @profile.save
-    #respond_to do |format|
-      #if @profile.save
-       # format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
-        #format.json { render :show, status: :created, location: @profile }
-      #else
-       # format.html { render :new }
-        #format.json { render json: @profile.errors, status: :unprocessable_entity }
-      #end
-    #end
+    current_user.profile = @profile
   end
 
   # PATCH/PUT /profiles/1
   # PATCH/PUT /profiles/1.json
   def update
     @profile.update(profile_params)
-    @profiles = Profile.all
-    #respond_to do |format|
-      #if @profile.update(profile_params)
-      #  format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
-      #  format.json { render :show, status: :ok, location: @profile }
-      #else
-      #  format.html { render :edit }
-      #  format.json { render json: @profile.errors, status: :unprocessable_entity }
-      #end
-    #end
+
+   
+    current_user.profile = @profile
   end
 
   # DELETE /profiles/1
@@ -79,6 +64,6 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:name, :age, :university, :major, :phone, :bio, :user_id)
+      params.require(:profile).permit(:name, :age, :university, :major, :phone, :bio, :user_id, :picture)
     end
 end

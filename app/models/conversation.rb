@@ -4,6 +4,8 @@ class Conversation < ActiveRecord::Base
 
   has_many :messages, dependent: :destroy
 
+  default_scope { order(updated_at: :desc) }
+
   scope :involving, -> (user) do
   	where("conversations.user_id =? OR conversations.firmuser_id =?",user.id,user.id)
   end

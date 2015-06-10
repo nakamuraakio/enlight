@@ -16,7 +16,7 @@
             <div class="panel-body">
               <li class="media">
                 <div class="media-left text-center">
-                  <%= image_tag current_user.profile.picture.url(:thumb) %>
+                  <%= image_tag current_user.profile.picture.url(:mini) %>
                   <strong><%= user.profile.name %></strong>
                 </div>
                 <div class="media-body">
@@ -44,7 +44,7 @@
                   <small><%= message.content %></small><br>
                 </div>
                 <div class="media-right text-center">
-                  <%= image_tag message.conversation.firmuser.firm.logo.url(:thumb) %>
+                  <%= image_tag message.conversation.firmuser.firm.logo.url(:mini) %>
                   <strong><%= firmuser.firm.name %></strong>
                 </div>
               </li>
@@ -61,15 +61,8 @@
               <% end %>
             </div>
           </div>
-
         <% else %>
-        <% end %>
-        　
-          
-        
-
-
-    
+        <% end %>    
       <% end %>
     <% end %>
   </ul>
@@ -125,8 +118,7 @@
             <% end %>
           </li>
         <% else %>
-        <% end %>   
-    
+        <% end %>      
       <% end %>
     <% end %>
   </ul>

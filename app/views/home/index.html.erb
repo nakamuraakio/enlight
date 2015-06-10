@@ -1,5 +1,44 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-
-<%= link_to '企業の方のログイン', firmuser_session_path %>
-<%= link_to '学生のログイン' , user_session_path %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-md-3">
+      <div class="panel panel-default home-header">
+        
+        <h3 class="text-center"><%= image_tag "1433352125_ic_home_48px.png", :size => "28x28" %> ホーム</h3>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
+      <div class="panel panel-default home-panel">
+        <a href="/conversations"></a>        
+        <%= image_tag "1433166112_contact.png", :class => "center-block" %>
+        <br><p class="text-center"><strong>メッセージを送る</strong></p>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-6">
+      <div class="panel panel-default home-panel">
+        <%= link_to "", firms_path %>
+        <%= image_tag "1433276774_briefcase.png", :class => "center-block" %>
+        <br><p class="text-center"><strong>企業を探す</strong></p>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-6">
+      <div class="panel panel-default home-panel">
+        <%= image_tag "1433277076_star-circle.png", :class => "center-block" %>
+      　<br><p class="text-center"><strong>気になる企業一覧</strong></p>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-6">
+      <div class="panel panel-default home-panel">
+        <%= image_tag "1433277302_common_new_edit_compose_.png", :class => "center-block" %>
+        <% if current_user.profile %>
+          <%= link_to "", edit_profile_path(current_user), remote: true %>
+          <br><p class="text-center"><strong>プロフィールを編集する</strong></p>
+        <% else %>
+          <%= link_to "", new_profile_path, remote: true %>
+          <br><p class="text-center"><strong>プロフィールを登録する</strong></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

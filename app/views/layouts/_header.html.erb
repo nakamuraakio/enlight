@@ -18,7 +18,7 @@
         <% if user_signed_in? %>
           <li><%= link_to 'ログインアカウント変更', edit_user_registration_path %></li>
           <li><%= link_to "ログアウト", destroy_user_session_path %></li>
-          <li><%= link_to 'ホーム', profile_path(current_user.id) %></li>
+          <li><%= link_to 'ホーム', home_index_path %></li>
         <% elsif firmuser_signed_in? %>
           <li><%= link_to 'ログインアカウント変更', edit_firmuser_registration_path %></li>
           <li><%= link_to 'ログアウト', destroy_firmuser_session_path %></li>

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'home/index'
+
   devise_for :firmusers
   get 'messages/index'
 
@@ -15,8 +17,8 @@ Rails.application.routes.draw do
     :sessions => 'users/sessions'
   }
   resources :users, :only => [:index, :show]
-  get 'home/index'
-  root to: "home#index"
+  get 'landingpage/index'
+  root to: "landingpage#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

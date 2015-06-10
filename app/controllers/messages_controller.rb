@@ -35,10 +35,10 @@ class MessagesController < ApplicationController
     respond_to do |format|
       if @message.save
         format.html { redirect_to conversation_messages_path(@conversation), notice: 'Firm was successfully created.' }
-        format.json { render :show, status: :created, location: @firm }
+        format.json { render :show, status: :created, location: @message }
       else
         format.html { redirect_to conversation_messages_path, notice: 'error!' }
-        format.json { render json: @firm.errors, status: :unprocessable_entity }
+        format.json { render json: @message.errors, status: :unprocessable_entity }
       end
     end
   end
